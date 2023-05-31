@@ -1,0 +1,31 @@
+{
+  "name": "craft-baseline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "setup/bin/index.mjs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "setup": "setup/bin/index.mjs",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaengle/craft-baseline.git"
+  },
+  "author": "Zaengle Corp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaengle/craft-baseline/issues"
+  },
+  "homepage": "https://github.com/zaengle/craft-baseline#README.md",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "colors": "^1.4.0",
+    "commander": "^10.0.1",
+    "glob": "^10.2.6",
+    "inquirer": "^9.2.6",
+    "replace-in-file": "^6.3.5",
+    "uuid": "^9.0.0"
+  }
+}

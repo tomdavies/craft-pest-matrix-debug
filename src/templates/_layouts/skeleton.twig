@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="referrer"
+        content="origin-when-cross-origin" />
+
+  <link rel="stylesheet" href="{{ craft.vite.asset("src/assets/css/app.css") }}" />
+  {{ craft.vite.script("src/assets/js/app.js", false) }}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+</head>
+
+<body class="{{ devMode ? 'debug' }}">
+  <a href="#main" class="absolute left-0 p-4 text-white bg-black -top-16 focus:top-0 focus:outline-none focus:outline-blue-500">Skip to main content</a>
+
+  {% block skeletonBody %}
+  {% endblock %}
+
+</body>
+
+</html>

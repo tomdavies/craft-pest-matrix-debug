@@ -1,0 +1,11 @@
+/.env
+/.idea
+
+.DS_Store
+
+# Vendor / Packages
+/build
+/node_modules/
+
+# Testing
+/coverage

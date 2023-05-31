@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build_php:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.2]
+
+    steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@master
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: src/vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: 👨‍💻 Install Composer Dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: latest
+          args: --profile --ignore-platform-reqs --working-dir=./src --prefer-dist --no-progress
+
+      - name: 🛠 Run PHPStan
+        uses: php-actions/phpstan@v3
+        with:
+          php_version: latest
+          memory_limit: 1G
+          configuration: ./phpstan.neon
+
+      - name: 🔬 Check ECS
+        run: src/vendor/bin/ecs check --ansi --fix --config ./ecs.php
+
+      - name: Execute tests (Unit and Feature tests) via PestPHP
+        run: vendor/bin/pest --coverage-clover clover.xml
+
+  build_node:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [18]
+
+    steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@master
+
+      - name: 🏗 Set Up Node Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+          check-latest: true
+
+      - name: 🧑‍💻 Install JS Dependencies
+        run: npm ci
+
+      - name: 📋 Run ESlint
+        run: npm run eslint --if-present
+
+      - name: 🧪 Run JS Tests
+        run: npm run test --if-present
+
+      - name: 👷‍ Build Front End Assets
+        run: npm run build --if-present

@@ -1,0 +1,19 @@
+/.env
+/.idea
+.DS_Store
+.phpunit.result.cache
+
+# FE build artefacts
+
+web/dist/*
+web/mix-manifest.json
+web/hot
+web/images/
+web/fonts/
+
+# Craft
+/storage/*
+!/storage/rebrand
+
+# Vendor / Packages
+/vendor

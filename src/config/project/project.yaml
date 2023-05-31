@@ -1,0 +1,43 @@
+dateModified: 1682003083
+email:
+  fromEmail: dev@zaengle.com
+  fromName: 'Craft Baseline'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    57875ca0-f4e2-4cfc-8de7-663b8b9b6e96: 'Craft Baseline' # Craft Baseline
+    659152ec-b639-4e38-8e14-397111b7cbf8: 'Craft Baseline' # Craft Baseline
+    23003052-0ab6-4232-92d4-3e19fc21d35b: Common # Common
+plugins:
+  conventions:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  elements-panel:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  pest:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  toolbelt:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Craft Baseline'
+  schemaVersion: 4.4.0.4
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
